@@ -9,6 +9,7 @@ type TaskType = {
 type PropsType = {
     title: string;
     tasks: Array<TaskType>
+    removeTask: Function
 }
 
 export function TodoList(props: PropsType) {
@@ -25,7 +26,7 @@ export function TodoList(props: PropsType) {
                     props.tasks.map(t => {
                         return <li><input type="checkbox" checked={t.isDone}/><span>{t.title}</span>
                             <button onClick={() =>{
-                            alert(t.id)}
+                            props.removeTask(t.id)}
                             }>x</button></li>
                     })
                 }
